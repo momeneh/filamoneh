@@ -73,7 +73,7 @@ docker-compose exec app php artisan migrate:fresh --seed
     docker-compose exec app npm install
  **(Optional) Build Frontend Assets**
 If you want to build assets manually (for production):
-```sh
+```
 docker-compose exec app npm run build 
 ```
 
