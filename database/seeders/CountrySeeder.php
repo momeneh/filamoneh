@@ -14,14 +14,7 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create([
-            'id'=>1,
-            'title' => 'us',
-        ]);
-        Role::create([
-            'id'=>2,
-            'title' => 'uk',
-        ]);
+       
         
     }
 }

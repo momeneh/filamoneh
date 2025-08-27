@@ -29,9 +29,9 @@ class PersonFactory extends Factory
             'family' => fake()->name(),
             'father_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'city_id' => $city->id,
-            'province_id' => $city->province_id,
-            'country_id' => $city->province->country_id ,
+            'city_id' => $city?->id,
+            'province_id' => $city?->province_id,
+            'country_id' => $city?->province?->country_id ,
             'gender' =>rand(1,2),
             'addr' => $this->faker->address(),
             // 'photo' => $this->faker->image(dir:storage_path('app/public'),width:400,height: 300,format:'jpg',fullPath:false) 

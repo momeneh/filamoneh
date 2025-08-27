@@ -81,7 +81,7 @@ docker-compose exec app npm run build
 ---
 
 ### 7. **Access Your App**
-- Visit: [http://localhost:8001](http://localhost:8001) (Nginx proxy to Laravel public directory)
+- Visit: [http://localhost:8000](http://localhost:8000) (Nginx proxy to Laravel public directory)
 
 ---
 http://localhost:8000/admin
