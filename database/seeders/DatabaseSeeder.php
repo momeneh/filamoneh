@@ -14,15 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create([
-        //     'password' => Hash::make('password'),
-        // ]);
+        User::factory(10)->create([
+            'password' => Hash::make('password'),
+        ]);
         Person::factory(10)->create();
-        // $this->call([
-        //     RoleSeeder::class,
-		// 	PermissionSeeder::class,
-        //     CountrySeeder::class
-        // ]);
+        $this->call([
+            RoleSeeder::class,
+			PermissionSeeder::class,
+            CountrySeeder::class
+        ]);
        
     }
 }

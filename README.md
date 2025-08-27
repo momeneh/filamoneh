@@ -38,9 +38,9 @@ Edit `.env` and set:
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=laravel
-DB_PASSWORD=secret
+DB_DATABASE=filament
+DB_USERNAME=filament
+DB_PASSWORD=filament_password
 REDIS_HOST=redis
 ```
 (Adjust values if you changed them in `docker-compose.yml`.)
@@ -63,7 +63,7 @@ docker-compose exec app php artisan key:generate
 
 ### 5. **Run Migrations**
 ```sh
-docker-compose exec app php artisan migrate
+docker-compose exec app php artisan migrate --seed
 ```
 
 ---
@@ -81,7 +81,7 @@ docker-compose exec app npm run build
 ---
 
 ### 7. **Access Your App**
-- Visit: [http://localhost:8000](http://localhost:8000) (Nginx proxy to Laravel public directory)
+- Visit: [http://localhost:8001](http://localhost:8001) (Nginx proxy to Laravel public directory)
 
 ---
 http://localhost:8000/admin
