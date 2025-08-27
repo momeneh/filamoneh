@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: filamoneh-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - filamoneh-network
+
+  # Vite Development Server
+  vite:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: filamoneh-vite
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - "5174:5174"
+    command: npm run dev
+    networks:
+      - filamoneh-network
+
+  # Nginx Service
+  nginx:
+    image: nginx:1.19
+    container_name: filamoneh-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - filamoneh-network
+
+  # MySQL Service
+  db:
+    image: mysql:8.4
+    container_name: filamoneh-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - filamoneh-network
+
+  # Redis Service
+  redis:
+    image: redis:alpine
+    container_name: filamoneh-redis
+    restart: unless-stopped
+    networks:
+      - filamoneh-network
+
+  # Queue Worker
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: filamoneh-queue
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    command: php artisan queue:work --tries=3 --backoff=60 --timeout=60
+    networks:
+      - filamoneh-network
+
+  # Scheduler
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: filamoneh-scheduler
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    command: php artisan schedule:work
+    networks:
+      - filamoneh-network
+
+networks:
+  filamoneh-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+
