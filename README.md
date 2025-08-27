@@ -63,7 +63,7 @@ docker-compose exec app php artisan key:generate
 
 ### 5. **Run Migrations**
 ```sh
-docker-compose exec app php artisan migrate --seed
+docker-compose exec app php artisan migrate:fresh --seed
 ```
 
 ---
