@@ -82,8 +82,11 @@ docker-compose exec app npm run build
 
 ### 7. **Access Your App**
 - Visit: [http://localhost:8000](http://localhost:8000) (Nginx proxy to Laravel public directory)
+
+```
 user : admin@filamoneh.com 
 pass : password 
+```
 ---
 
 **You now have a full TALL stack (Laravel, Tailwind, Alpine, Livewire, Filament) running in Docker!**
