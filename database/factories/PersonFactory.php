@@ -34,7 +34,7 @@ class PersonFactory extends Factory
             'country_id' => $city->province->country_id ,
             'gender' =>rand(1,2),
             'addr' => $this->faker->address(),
-            'photo' => $this->faker->image(dir:storage_path('app/public'),width:400,height: 300,format:'jpg',fullPath:false) 
+            // 'photo' => $this->faker->image(dir:storage_path('app/public'),width:400,height: 300,format:'jpg',fullPath:false) 
         ];
     }
 }
