@@ -9,7 +9,7 @@ This is a practice project created for learning and testing various features of 
 - Big Plan management system
 - Authentication system
 - RTL (Right-to-Left) Persian user interface
-- feature tests with phpUnit
+- Feature tests with phpUnit
 
 ## Technologies
 
