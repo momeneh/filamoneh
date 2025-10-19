@@ -170,7 +170,7 @@ class PaperResource extends BaseResource
                                         $openAiService = new OpenAiService();
                                         $extractedTags = $openAiService->retrieveTagsForDescription($description);
                                         $tags = [];
-                                        if(empty($extractedTags)){
+                                        if($openAiService->wasFallbackUsed()){
                                             \Filament\Notifications\Notification::make()
                                                 ->title(__('Tags could not be extracted'))
                                                 ->body(__('could not connect to AI Please See the log for more info'))

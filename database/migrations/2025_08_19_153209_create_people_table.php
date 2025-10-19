@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('name')->comment('نام')->nullable();
             $table->string('family')->comment('نام خانوادگی')->nullable();
-            $table->string('email')->comment('ایمیل')->nullable();
+            $table->string('email')->comment('ایمیل')->nullable()->unique();
             $table->string('national_code')->comment('کد ملی')->nullable();
             $table->string('shenasname')->comment('شماره شناسنامه')->nullable();
             $table->string('passport_number')->comment('شماره گذرنامه')->nullable();

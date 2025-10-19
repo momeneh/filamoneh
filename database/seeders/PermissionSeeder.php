@@ -24,13 +24,14 @@ class PermissionSeeder extends Seeder
         Permission::truncate();
         PermissionRole::truncate();
         $resources = [
-            'permissionRole',
+            'permission_role',
             'role',
             'user',
             'country',
             'province',
             'city',
-            'paper'
+            'paper',
+            'person'
         ];
         $actions = [
             'view',

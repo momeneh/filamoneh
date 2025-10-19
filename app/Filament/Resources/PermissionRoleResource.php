@@ -14,7 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-class PermissionRoleResource extends Resource
+class PermissionRoleResource extends BaseResource
 {
     protected static ?string $model = PermissionRole::class;
 

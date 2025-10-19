@@ -52,9 +52,9 @@ class OpenAiService
 
             // If we get here, it means the API call failed and we need to use fallback
             // Log::info('Using fallback tag extraction due to API failure');
-            // $this->usedFallback = true;
-            // return $this->fallbackTagExtraction($description);
-            return [];
+            $this->usedFallback = true;
+            return $this->fallbackTagExtraction($description);
+            // return [];
 
         } catch (\Exception $e) {
             Log::error('Error calling OpenAI API', [
@@ -220,6 +220,7 @@ class OpenAiService
         $keywords = array_slice($keywords, 0, 8);
 
         return array_values($keywords);
+
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Person;
+use App\Models\Subject;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
         Person::factory(10)->create();
+
+        Subject::create(['title'=>'هوش مصنوعی']);
+        Subject::create(['title'=>'نانو']);
         $this->call([
             RoleSeeder::class,
 			PermissionSeeder::class,

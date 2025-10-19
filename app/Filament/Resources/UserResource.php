@@ -74,23 +74,10 @@ class UserResource extends BaseResource
                             ->password()
                             ->visible(fn (Page $livewire): bool => $livewire instanceof CreateUser)
                     ]),
-                    Repeater::make('roleUser')
-                        ->relationship()
-                        ->minItems(1)
+                    Forms\Components\CheckboxList::make('roles')
+                        ->relationship('roles', 'title')
                         ->label(__('filament.fields.roles'))
-                        ->addActionAlignment(Alignment::End)
-                        ->simple(
-                            Select::make('role')
-                                ->relationship('role','title')
-                                ->options(Role::all()->pluck('title','id'))
-                                ->createOptionForm([
-                                    Forms\Components\TextInput::make('title')
-                                        ->required()
-                                        ->maxLength(255),
-                                ])
-                                ->required(),
-                        )
-                        ->columns(1)
+                        ->required()
                 ]),
             ])
             ->columns(1);

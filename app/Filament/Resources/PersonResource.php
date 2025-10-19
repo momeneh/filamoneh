@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Exports\PaperExporter;
 use Illuminate\Validation\Rules\Exists;
 
-class PersonResource extends Resource
+class PersonResource extends BaseResource
 {
     protected static ?string $model = Person::class;
 

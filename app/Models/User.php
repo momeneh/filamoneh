@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
+use Filament\Panel;
 
-class User extends Authenticatable implements  HasAvatar
+
+class User extends Authenticatable implements  HasAvatar,FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -76,8 +78,10 @@ class User extends Authenticatable implements  HasAvatar
         return $this->permissions()->contains('name', $permission);
     }
 
-    public function getFullNameAttribute()
+   
+
+    public function canAccessPanel(Panel $panel): bool
     {
-        return "{$this->name} {$this->last_name}";
+        return $this->hasVerifiedEmail();
     }
 }

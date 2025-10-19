@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 use App\Models\User;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 
 abstract class BaseResource extends Resource
 {
@@ -38,7 +38,7 @@ abstract class BaseResource extends Resource
     {
         // مثلاً: post.viewAny یا user.delete
         $modelName = class_basename(static::$model);
-        return strtolower($modelName) . '.' . $action;
+        return strtolower(str::snake($modelName)) . '.' . $action;
     }
 
     public static function convertNumbers($string, $toLatin = false)
